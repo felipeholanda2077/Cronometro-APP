@@ -1,20 +1,23 @@
 // Importamos as bibliotecas e componentes principais para nosso projeto 
 import React, { Component } from 'react'; 
 import { View, Text, Button, Image, ScrollView} from 'react-native';
-import { Alert } from 'react-native-web';
 import { form } from '../cronometroAPP/index'
 
 // Criamos a nossa classe App para renderizar nosso projeto 
 class App extends Component { 
   render() { 
     // Caminho URI da nossa imagem 
-    let logoURI = "https://img.icons8.com/glyph-neue/344/stopwatch.png"; 
+    let logoURI = "https://img.icons8.com/glyph-neue/344/stopwatch.png";
+    let HomemURI = "https://www.pngplay.com/wp-content/uploads/2/Running-Man-PNG-Clipart-Background.png";
 
     // Array de imagens
     // Esse array ira inserir a mesma imagem até o loop terminar
     let imagens = []
     for (let i=0; i < 1; i++) {
       imagens.push(<Image style = {{width:340, height:400, margin: 5}} source = {{uri: logoURI}} /> )
+    }
+    for (let i=0; i < 1; i++) {
+      imagens.push(<Image style = {{ position: "absolute", left: 189, top: 200, width:190, height:210, margin: 5}} source = {{uri: HomemURI}} /> )
     }
     return ( 
       <ScrollView>
