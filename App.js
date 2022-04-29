@@ -1,14 +1,8 @@
 // Importamos as bibliotecas e componentes principais para nosso projeto 
 import React, { Component } from 'react'; 
 import { View, Text, TextInput, Button, Image, ScrollView } from 'react-native';
+import {form} from '../styles/index.js'; 
 
-window.onload = function(){
-  var seconds = 00;
-  var tens = 00;
-  var appendSeconds = document.getElementById("tens");
-  var appendTens = document.getElementById("seconds");
-  var buttonStart = document.getElementById("button-start") 
-}
 // Criamos a nossa classe App para renderizar nosso projeto 
 class App extends Component { 
   render() { 
@@ -38,6 +32,16 @@ class App extends Component {
             </ScrollView>
             <Text style={{color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 30}}>oi</Text>
             {/* Chamada do Array que ira inserir as imagens vezes */}
+
+            <View style={form.container}>
+                  <Text style={form.texts}>Nome: </Text>
+                  <TextInput placeholder="Informe seu nome" style={form.inputs} /> 
+                  <Text></Text>
+                  <Text style={form.texts}>Idade: </Text>   
+                  <TextInput placeholder="Informe sua idade" keyboardType="numeric" style={form.inputs} /> 
+                  <Text></Text>
+                  <Button title="Pronto!"></Button>
+              </View>
         </View> 
       </ScrollView>
     ) 
