@@ -1,7 +1,7 @@
 // Importamos as bibliotecas e componentes principais para nosso projeto 
 import React, { Component } from 'react'; 
-import { View, Text, TextInput, Button, Image, ScrollView } from 'react-native';
-import {form} from '../styles/index.js'; 
+import { View, Text, Button, Image, ScrollView } from 'react-native';
+import { form } from '../cronometroAPP/index'
 
 // Criamos a nossa classe App para renderizar nosso projeto 
 class App extends Component { 
@@ -13,12 +13,12 @@ class App extends Component {
     // Esse array ira inserir a mesma imagem até o loop terminar
     let imagens = []
     for (let i=0; i < 1; i++) {
-      imagens.push(<Image style = {{width:380, height:450, margin: 5}} source = {{uri: logoURI}} /> )
+      imagens.push(<Image style = {{width:340, height:400, margin: 5}} source = {{uri: logoURI}} /> )
     }
     return ( 
       <ScrollView>
         {/* Area que será utilizada pelo nosso conteúdo */}
-        <View>
+        <View style={form.container}>
           
             {/* Inserindo textos e estilizando */} 
             <Text style={{fontSize: 20, textTransform: 'uppercase'}}></Text> 
@@ -30,18 +30,10 @@ class App extends Component {
               {/* Chamada do Array que ira inserir as imagens vezes */}
               {imagens}
             </ScrollView>
-            <Text style={{color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 30}}>oi</Text>
             {/* Chamada do Array que ira inserir as imagens vezes */}
-
-            <View style={form.container}>
-                  <Text style={form.texts}>Nome: </Text>
-                  <TextInput placeholder="Informe seu nome" style={form.inputs} /> 
-                  <Text></Text>
-                  <Text style={form.texts}>Idade: </Text>   
-                  <TextInput placeholder="Informe sua idade" keyboardType="numeric" style={form.inputs} /> 
-                  <Text></Text>
-                  <Button title="Pronto!"></Button>
-              </View>
+            <Button style={form.botao} title='Vai!'></Button><Button style={form.botao} color={'black'} title='Salvar e Zerar'></Button>
+            {/* Chamada do Array que ira inserir as imagens vezes */}
+              
         </View> 
       </ScrollView>
     ) 
