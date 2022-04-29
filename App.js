@@ -1,6 +1,7 @@
 // Importamos as bibliotecas e componentes principais para nosso projeto 
 import React, { Component } from 'react'; 
-import { View, Text, Button, Image, ScrollView } from 'react-native';
+import { View, Text, Button, Image, ScrollView} from 'react-native';
+import { Alert } from 'react-native-web';
 import { form } from '../cronometroAPP/index'
 
 // Criamos a nossa classe App para renderizar nosso projeto 
@@ -22,17 +23,21 @@ class App extends Component {
           
             {/* Inserindo textos e estilizando */} 
             <Text style={{fontSize: 20, textTransform: 'uppercase'}}></Text> 
-            <Text style={{color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 50}}>Cronometro Digital</Text> 
-            <Text style={{}}></Text> 
+            <Text style={{color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10}}>Cronometro Digital</Text> 
+             
 
             {/*ScrollView com rolagem horizontal*/}
             <ScrollView>
               {/* Chamada do Array que ira inserir as imagens vezes */}
               {imagens}
             </ScrollView>
+
+            <Text style={{textAlign: "center",fontSize: 100}}>00.00s</Text>
             {/* Chamada do Array que ira inserir as imagens vezes */}
-            <Button style={form.botao} title='Vai!'></Button><Button style={form.botao} color={'black'} title='Salvar e Zerar'></Button>
+            <Button style={{paddingTop: 10}} color={"black"} title='Vai!'></Button><Button paddingTop={50} color={'black'} title='Salvar e Zerar'></Button>
             {/* Chamada do Array que ira inserir as imagens vezes */}
+
+            <Text style={{textAlign: "center",fontSize: 13, paddingTop: 100}}>© Felipe Holanda - Atividades Ágeis</Text>
               
         </View> 
       </ScrollView>
@@ -43,4 +48,5 @@ class App extends Component {
   // Informamos qual classe será renderizada no aplicativo 
   export default App;
 
+  
             

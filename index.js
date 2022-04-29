@@ -16,7 +16,7 @@ const form = StyleSheet.create({
     borderBottomColor: '#772ea2'
   },
   botao: {
-    color: "red",
+    color: "#fff",
 }
 });
 
@@ -46,7 +46,9 @@ const header = StyleSheet.create({
     right: 20,
     position: "absolute",
   },
-  
+  botao: {
+    color: "#fff",
+}
 });
 
 export { form, header };
