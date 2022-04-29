@@ -34,7 +34,7 @@ class App extends Component {
 
             <Text style={{textAlign: "center",fontSize: 100}}>00.00s</Text>
             {/* Chamada do Array que ira inserir as imagens vezes */}
-            <Button style={{paddingTop: 10}} color={"black"} title='Vai!'></Button><Button paddingTop={50} color={'black'} title='Salvar e Zerar'></Button>
+            <Button style={{paddingTop: 10}} color={"black"} title='Vai!'></Button><Text style={{textAlign: "center",fontSize: 10}}></Text><Button paddingTop={50} color={'black'} title='Salvar e Zerar'></Button>
             {/* Chamada do Array que ira inserir as imagens vezes */}
 
             <Text style={{textAlign: "center",fontSize: 13, paddingTop: 100}}>© Felipe Holanda - Atividades Ágeis</Text>
