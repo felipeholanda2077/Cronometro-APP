@@ -9,8 +9,8 @@
 <a href="#Tecnologias-">Tecnologias</a> •
 <a href="#Ferramentas">Ferramentas</a></p>
 
-<h1 align="center">Cronometro-APP</h1>
-<h3 align="center"> Sobre o Projeto 👨🏻‍💻</h3>
+<h2 align="center"> Sobre o Projeto 👨🏻‍💻</h2>
+<h3 align="center">Cronometro-APP</h3>
 <p align="center">Um aplicativo de um Cronometro para uma atividade do curso do Senac</p>
 
 <br>
