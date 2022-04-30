@@ -13,6 +13,8 @@
 <h3 align="center"> Sobre o Projeto 👨🏻‍💻</h3>
 <p align="center">Um aplicativo de um Cronometro para uma atividade do curso do Senac</p>
 
+<br>
+
 <h3 align="center">---------------------------------------------</h3>
 <h3 align="center">Como iniciar o projeto</h3>
 <h4 align="center">Digitar no terminal: npm start </h4>
