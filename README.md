@@ -5,4 +5,5 @@
 </p>
 
 <h1 align="center">Cronometro-APP</h1>
+<h1 align="center"> Sobre o Projeto 👨🏻‍💻</h1>
 <p align="center">Um aplicativo de um Cronometro para uma atividade do curso do Senac</p>
