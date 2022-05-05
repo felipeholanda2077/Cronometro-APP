@@ -1,7 +1,54 @@
 // Importamos as bibliotecas e componentes principais para nosso projeto 
 import React, { Component } from 'react'; 
 import { View, Text, Button, Image, ScrollView} from 'react-native';
+import { Component } from 'react';
 import { form } from '../cronometroAPP/index'
+
+class MO extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      horas: 0,
+      minutos: 0,
+      segundos: 0,
+      ativo: false,
+      voltas: []
+    }
+    pulsoDeClock = this.pulsoDeClock.bind(this);
+    iniciaRelogio = this.iniciaRelogio.bind(this);
+    pararRelogio = this.pararRelogio.bind(this);
+    marcarVolta = this.marcarVolta.bind(this);
+    zerarRelogio = this.zerarRelogio.bind(this);
+  }
+
+  iniciaRelogio() {
+    if(!this.state.ativo){
+      this.setState({clock : setInterval(this.pulsoDeClock,1000)});
+      this.setState({ativo: true})
+    }
+  }
+
+  pulsoDeClock() {
+    var h = this.state.horas;
+    var m = this.state.minutos;
+    var s = this.state.segundos;
+
+    if(s<59){
+      s++;
+    }else {
+      s = 0;
+      if(m < 59){
+        m++;
+      }else{
+        m = 0;
+        h++;
+      }
+    }
+
+    this.setState({segundos: s, minutos: m, horas: h})
+  }
+}
 
 // Criamos a nossa classe App para renderizar nosso projeto 
 class App extends Component { 
