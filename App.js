@@ -59,7 +59,28 @@ class MO extends Component {
   marcarVolta(){
     var txtDoCronometro = this.formatar(this.state.horas) + 
     ":" + this.formatar(this.state.minutos) + 
-    ":" + this.formatar(this.state.segundos);
+    ":" + this.formatar(this.state.segundos) + "\n";
+    this.state.voltas.push(txtDoCronometro);
+    this.forceUpdate();
+  }
+  formatar(t){
+    return(t<10) ? "0"+t.toString() : t.toString();
+  }
+
+  zerarRelogio(){
+    this.pararRelogio();
+    this.setState({segundos:0,minutos:0,horas:0});
+
+    if(this.state.voltas.length>0){
+      this.state.vosltas.push(' ------- \n');
+    }
+  }
+
+  render()
+  {
+    var txtH = this.formatar(this.state.horas);
+    var txtM = this.formatar(this.state.minutos);
+    var txtS = this.formatar(this.state.segundos);
 
   }
 }
@@ -96,10 +117,16 @@ class App extends Component {
               {imagens}
             </ScrollView>
 
-            <Text style={{textAlign: "center",fontSize: 100}}>00.00s</Text>
+            <Text style={{textAlign: "center",fontSize: 100}}>{txtH}:{txtM}:{txtS}</Text>
             {/* Chamada do Array que ira inserir as imagens vezes */}
-            <Button style={{paddingTop: 10}} color={"black"} title='Vai!'></Button><Text style={{textAlign: "center",fontSize: 10}}></Text><Button paddingTop={50} color={'black'} title='Salvar e Zerar'></Button>
+            <Button style={{paddingTop: 10}} color={"black"} onPress={(this.state.ativo ? this.pararRelogio : this.iniciaRelogio)} title={(this.state.ativo ? 'Pausar' : 'Começar')}></Button><Text style={{textAlign: "center",fontSize: 10}}></Text><Button paddingTop={50} color={'black'} onPress={this.marcarVolta} title='Marcar Volta'></Button>
+            <Button onPress={this.zerarRelogio} title='Zerar' />
             {/* Chamada do Array que ira inserir as imagens vezes */}
+            <View>
+              <Text>
+                {this.state.voltas}
+              </Text>
+            </View>
 
             <Text style={{textAlign: "center",fontSize: 13, paddingTop: 100}}>© Felipe Holanda - Atividades Ágeis</Text>
               
