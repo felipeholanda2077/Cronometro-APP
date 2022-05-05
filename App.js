@@ -48,6 +48,20 @@ class MO extends Component {
 
     this.setState({segundos: s, minutos: m, horas: h})
   }
+
+  pararRelogio(){
+    if(this.state.ativo){
+      clearInterval(this.state.clock);
+      this.setState({ativo:false});
+    }
+  }
+
+  marcarVolta(){
+    var txtDoCronometro = this.formatar(this.state.horas) + 
+    ":" + this.formatar(this.state.minutos) + 
+    ":" + this.formatar(this.state.segundos);
+
+  }
 }
 
 // Criamos a nossa classe App para renderizar nosso projeto 
