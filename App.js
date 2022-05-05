@@ -129,7 +129,12 @@ class App extends Component {
             <Button style={{ paddingTop: 10 }} color={"black"} onPress={this.zerarRelogio} title='Zerar' />
           </View>
           <View>
-            <Text style={{ textAlign: "right"}}>
+          <Text style={{textAlign: "left"}}>Nº Registro</Text>
+          <Text style={{position: "absolute", left: 305}}>Tempo</Text>
+          <Text style={{ textAlign: "left"}}>
+              {this.state.voltas}
+            </Text>
+            <Text style={{ textAlign: "right", marginTop: -35}}>
               {this.state.voltas}
             </Text>
           </View>
