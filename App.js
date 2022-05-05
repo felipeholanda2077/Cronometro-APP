@@ -1,11 +1,12 @@
 // Importamos as bibliotecas e componentes principais para nosso projeto 
-import React, { Component } from 'react'; 
-import { View, Text, Button, Image, ScrollView} from 'react-native';
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { View, Text, Button, Image, ScrollView } from 'react-native';
 import { form } from '../cronometroAPP/index'
 
-class MO extends Component {
-  constructor(props){
+// Criamos a nossa classe App para renderizar nosso projeto 
+class App extends Component {
+
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -23,9 +24,9 @@ class MO extends Component {
   }
 
   iniciaRelogio() {
-    if(!this.state.ativo){
-      this.setState({clock : setInterval(this.pulsoDeClock,1000)});
-      this.setState({ativo: true})
+    if (!this.state.ativo) {
+      this.setState({ clock: setInterval(this.pulsoDeClock, 1000) });
+      this.setState({ ativo: true })
     }
   }
 
@@ -34,110 +35,110 @@ class MO extends Component {
     var m = this.state.minutos;
     var s = this.state.segundos;
 
-    if(s<59){
+    if (s < 59) {
       s++;
-    }else {
+    } else {
       s = 0;
-      if(m < 59){
+      if (m < 59) {
         m++;
-      }else{
+      } else {
         m = 0;
         h++;
       }
     }
 
-    this.setState({segundos: s, minutos: m, horas: h})
+    this.setState({ segundos: s, minutos: m, horas: h })
   }
 
-  pararRelogio(){
-    if(this.state.ativo){
+  pararRelogio() {
+    if (this.state.ativo) {
       clearInterval(this.state.clock);
-      this.setState({ativo:false});
+      this.setState({ ativo: false });
     }
   }
 
-  marcarVolta(){
-    var txtDoCronometro = this.formatar(this.state.horas) + 
-    ":" + this.formatar(this.state.minutos) + 
-    ":" + this.formatar(this.state.segundos) + "\n";
+  marcarVolta() {
+    var txtDoCronometro = this.formatar(this.state.horas) +
+      ":" + this.formatar(this.state.minutos) +
+      ":" + this.formatar(this.state.segundos) + "\n";
     this.state.voltas.push(txtDoCronometro);
     this.forceUpdate();
   }
-  formatar(t){
-    return(t<10) ? "0"+t.toString() : t.toString();
+  formatar(t) {
+    return (t < 10) ? "0" + t.toString() : t.toString();
   }
 
-  zerarRelogio(){
+  zerarRelogio() {
     this.pararRelogio();
-    this.setState({segundos:0,minutos:0,horas:0});
+    this.setState({ segundos: 0, minutos: 0, horas: 0 });
 
-    if(this.state.voltas.length>0){
+    if (this.state.voltas.length > 0) {
       this.state.vosltas.push(' ------- \n');
     }
   }
 
-  render()
-  {
-    var txtH = this.formatar(this.state.horas);
-    var txtM = this.formatar(this.state.minutos);
-    var txtS = this.formatar(this.state.segundos);
-
-  }
 }
 
-// Criamos a nossa classe App para renderizar nosso projeto 
-class App extends Component { 
-  render() { 
-    // Caminho URI da nossa imagem 
-    let logoURI = "https://img.icons8.com/glyph-neue/344/stopwatch.png";
-    let HomemURI = "https://www.pngplay.com/wp-content/uploads/2/Running-Man-PNG-Clipart-Background.png";
+render()
+{
 
-    // Array de imagens
-    // Esse array ira inserir a mesma imagem até o loop terminar
-    let imagens = []
-    for (let i=0; i < 1; i++) {
-      imagens.push(<Image style = {{width:340, height:400, margin: 5}} source = {{uri: logoURI}} /> )
-    }
-    for (let i=0; i < 1; i++) {
-      imagens.push(<Image style = {{ position: "absolute", left: 189, top: 200, width:190, height:210, margin: 5}} source = {{uri: HomemURI}} /> )
-    }
-    return ( 
-      <ScrollView>
-        {/* Area que será utilizada pelo nosso conteúdo */}
-        <View style={form.container}>
-          
-            {/* Inserindo textos e estilizando */} 
-            <Text style={{fontSize: 20, textTransform: 'uppercase'}}></Text> 
-            <Text style={{color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10}}>Cronometro Digital</Text> 
-             
+  var txtH = this.formatar(this.state.horas);
+  var txtM = this.formatar(this.state.minutos);
+  var txtS = this.formatar(this.state.segundos);
 
-            {/*ScrollView com rolagem horizontal*/}
-            <ScrollView>
-              {/* Chamada do Array que ira inserir as imagens vezes */}
-              {imagens}
-            </ScrollView>
+  // Caminho URI da nossa imagem 
+  let logoURI = "https://img.icons8.com/glyph-neue/344/stopwatch.png";
+  let HomemURI = "https://www.pngplay.com/wp-content/uploads/2/Running-Man-PNG-Clipart-Background.png";
 
-            <Text style={{textAlign: "center",fontSize: 100}}>{txtH}:{txtM}:{txtS}</Text>
-            {/* Chamada do Array que ira inserir as imagens vezes */}
-            <Button style={{paddingTop: 10}} color={"black"} onPress={(this.state.ativo ? this.pararRelogio : this.iniciaRelogio)} title={(this.state.ativo ? 'Pausar' : 'Começar')}></Button><Text style={{textAlign: "center",fontSize: 10}}></Text><Button paddingTop={50} color={'black'} onPress={this.marcarVolta} title='Marcar Volta'></Button>
-            <Button onPress={this.zerarRelogio} title='Zerar' />
-            {/* Chamada do Array que ira inserir as imagens vezes */}
-            <View>
-              <Text>
-                {this.state.voltas}
-              </Text>
-            </View>
-
-            <Text style={{textAlign: "center",fontSize: 13, paddingTop: 100}}>© Felipe Holanda - Atividades Ágeis</Text>
-              
-        </View> 
-      </ScrollView>
-    ) 
-    }
+  // Array de imagens
+  // Esse array ira inserir a mesma imagem até o loop terminar
+  let imagens = []
+  for (let i = 0; i < 1; i++) {
+    imagens.push(<Image style={{ width: 340, height: 400, margin: 5 }} source={{ uri: logoURI }} />)
+  }
+  for (let i = 0; i < 1; i++) {
+    imagens.push(<Image style={{ position: "absolute", left: 189, top: 200, width: 190, height: 210, margin: 5 }} source={{ uri: HomemURI }} />)
   }
 
-  // Informamos qual classe será renderizada no aplicativo 
-  export default App;
 
-  
-            
+   return(
+    <ScrollView>
+      {/* Area que será utilizada pelo nosso conteúdo */}
+      <View style={form.container}>
+
+        {/* Inserindo textos e estilizando */}
+        <Text style={{ fontSize: 20, textTransform: 'uppercase' }}></Text>
+        <Text style={{ color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10 }}>Cronometro Digital</Text>
+
+
+        {/*ScrollView com rolagem horizontal*/}
+        <ScrollView>
+          {/* Chamada do Array que ira inserir as imagens vezes */}
+          {imagens}
+        </ScrollView>
+
+        <Text style={{ textAlign: "center", fontSize: 100 }}>{txtH}:{txtM}:{txtS}</Text>
+        {/* Chamada do Array que ira inserir as imagens vezes */}
+        <Button style={{ paddingTop: 10 }} color={"black"} onPress={(this.state.ativo ? this.pararRelogio : this.iniciaRelogio)} title={(this.state.ativo ? 'Pausar' : 'Começar')}></Button><Text style={{ textAlign: "center", fontSize: 10 }}></Text><Button paddingTop={50} color={'black'} onPress={this.marcarVolta} title='Marcar Volta'></Button>
+        <Button onPress={this.zerarRelogio} title='Zerar' />
+        {/* Chamada do Array que ira inserir as imagens vezes */}
+        <View>
+          <Text>
+            {this.state.voltas}
+          </Text>
+        </View>
+
+        <Text style={{ textAlign: "center", fontSize: 13, paddingTop: 100 }}>© Felipe Holanda - Atividades Ágeis</Text>
+
+      </View>
+    </ScrollView>
+  )
+}
+
+
+
+
+// Informamos qual classe será renderizada no aplicativo 
+export default App;
+
+
