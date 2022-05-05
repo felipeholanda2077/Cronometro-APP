@@ -1,6 +1,7 @@
 // Importamos as bibliotecas e componentes principais para nosso projeto 
 import React, { Component } from 'react';
-import { View, Text, Button, Image, ScrollView } from 'react-native';
+import { View, Text, Button, Image, ScrollView, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-web';
 import { form } from '../cronometroAPP/index'
 
 // Criamos a nossa classe App para renderizar nosso projeto 
@@ -16,11 +17,11 @@ class App extends Component {
       ativo: false,
       voltas: []
     }
-    pulsoDeClock = this.pulsoDeClock.bind(this);
-    iniciaRelogio = this.iniciaRelogio.bind(this);
-    pararRelogio = this.pararRelogio.bind(this);
-    marcarVolta = this.marcarVolta.bind(this);
-    zerarRelogio = this.zerarRelogio.bind(this);
+    this.pulsoDeClock = this.pulsoDeClock.bind(this);
+    this.iniciaRelogio = this.iniciaRelogio.bind(this);
+    this.pararRelogio = this.pararRelogio.bind(this);
+    this.marcarVolta = this.marcarVolta.bind(this);
+    this.zerarRelogio = this.zerarRelogio.bind(this);
   }
 
   iniciaRelogio() {
@@ -43,7 +44,7 @@ class App extends Component {
         m++;
       } else {
         m = 0;
-        h++;
+        h++
       }
     }
 
@@ -58,9 +59,7 @@ class App extends Component {
   }
 
   marcarVolta() {
-    var txtDoCronometro = this.formatar(this.state.horas) +
-      ":" + this.formatar(this.state.minutos) +
-      ":" + this.formatar(this.state.segundos) + "\n";
+    var txtDoCronometro = this.formatar(this.state.horas) + ":" + this.formatar(this.state.minutos) + ":" + this.formatar(this.state.segundos) + "\n";
     this.state.voltas.push(txtDoCronometro);
     this.forceUpdate();
   }
@@ -73,69 +72,75 @@ class App extends Component {
     this.setState({ segundos: 0, minutos: 0, horas: 0 });
 
     if (this.state.voltas.length > 0) {
-      this.state.vosltas.push(' ------- \n');
+      this.state.voltas.push(' ------- \n');
     }
   }
 
-}
-
-render()
-{
-
-  var txtH = this.formatar(this.state.horas);
-  var txtM = this.formatar(this.state.minutos);
-  var txtS = this.formatar(this.state.segundos);
-
-  // Caminho URI da nossa imagem 
-  let logoURI = "https://img.icons8.com/glyph-neue/344/stopwatch.png";
-  let HomemURI = "https://www.pngplay.com/wp-content/uploads/2/Running-Man-PNG-Clipart-Background.png";
-
-  // Array de imagens
-  // Esse array ira inserir a mesma imagem até o loop terminar
-  let imagens = []
-  for (let i = 0; i < 1; i++) {
-    imagens.push(<Image style={{ width: 340, height: 400, margin: 5 }} source={{ uri: logoURI }} />)
-  }
-  for (let i = 0; i < 1; i++) {
-    imagens.push(<Image style={{ position: "absolute", left: 189, top: 200, width: 190, height: 210, margin: 5 }} source={{ uri: HomemURI }} />)
-  }
 
 
-   return(
-    <ScrollView>
-      {/* Area que será utilizada pelo nosso conteúdo */}
-      <View style={form.container}>
+  render() {
 
-        {/* Inserindo textos e estilizando */}
-        <Text style={{ fontSize: 20, textTransform: 'uppercase' }}></Text>
-        <Text style={{ color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10 }}>Cronometro Digital</Text>
+    var txtH = this.formatar(this.state.horas);
+    var txtM = this.formatar(this.state.minutos);
+    var txtS = this.formatar(this.state.segundos);
+
+    // Caminho URI da nossa imagem 
+    let logoURI = "https://img.icons8.com/glyph-neue/344/stopwatch.png";
+    let HomemURI = "https://www.pngplay.com/wp-content/uploads/2/Running-Man-PNG-Clipart-Background.png";
+
+    // Array de imagens
+    // Esse array ira inserir a mesma imagem até o loop terminar
+    let imagens = []
+    for (let i = 0; i < 1; i++) {
+      imagens.push(<Image style={{ width: 340, height: 400, margin: 5 }} source={{ uri: logoURI }} />)
+    }
+    for (let i = 0; i < 1; i++) {
+      imagens.push(<Image style={{ position: "absolute", left: 189, top: 200, width: 190, height: 210, margin: 5 }} source={{ uri: HomemURI }} />)
+    }
 
 
-        {/*ScrollView com rolagem horizontal*/}
-        <ScrollView>
+    return (
+      <ScrollView>
+        {/* Area que será utilizada pelo nosso conteúdo */}
+        <View style={form.container}>
+
+          {/* Inserindo textos e estilizando */}
+          <Text style={{ fontSize: 20, textTransform: 'uppercase' }}></Text>
+          <Text style={{ color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10 }}>Cronometro Digital</Text>
+
+          {/*ScrollView com rolagem horizontal*/}
+          <ScrollView>
+            {/* Chamada do Array que ira inserir as imagens vezes */}
+            {imagens}
+          </ScrollView>
+
+          <Text style={{ textAlign: "center", fontSize: 50 }}>{txtH}:{txtM}:{txtS}</Text>
           {/* Chamada do Array que ira inserir as imagens vezes */}
-          {imagens}
-        </ScrollView>
+          <View>
+            <Button style={{ paddingTop: 10 }} color={"black"}
+              onPress={(this.state.ativo ? this.pararRelogio : this.iniciaRelogio)} title={(this.state.ativo ? 'Pausar' : 'Começar')} />
 
-        <Text style={{ textAlign: "center", fontSize: 100 }}>{txtH}:{txtM}:{txtS}</Text>
-        {/* Chamada do Array que ira inserir as imagens vezes */}
-        <Button style={{ paddingTop: 10 }} color={"black"} onPress={(this.state.ativo ? this.pararRelogio : this.iniciaRelogio)} title={(this.state.ativo ? 'Pausar' : 'Começar')}></Button><Text style={{ textAlign: "center", fontSize: 10 }}></Text><Button paddingTop={50} color={'black'} onPress={this.marcarVolta} title='Marcar Volta'></Button>
-        <Button onPress={this.zerarRelogio} title='Zerar' />
-        {/* Chamada do Array que ira inserir as imagens vezes */}
-        <View>
-          <Text>
-            {this.state.voltas}
-          </Text>
+            <Text style={{ textAlign: "center", fontSize: 10 }}></Text>
+
+            <Button paddingTop={50} color={'black'} onPress={this.marcarVolta} title='Marcar Volta'></Button>
+
+            <Text style={{ textAlign: "center", fontSize: 10 }}></Text>
+
+            <Button style={{ paddingTop: 10 }} color={"black"} onPress={this.zerarRelogio} title='Zerar' />
+          </View>
+          <View>
+            <Text>
+              {this.state.voltas}
+            </Text>
+          </View>
+
+          <Text style={{ textAlign: "center", fontSize: 13, paddingTop: 100 }}>© Felipe Holanda - Atividades Ágeis</Text>
+
         </View>
-
-        <Text style={{ textAlign: "center", fontSize: 13, paddingTop: 100 }}>© Felipe Holanda - Atividades Ágeis</Text>
-
-      </View>
-    </ScrollView>
-  )
+      </ScrollView>
+    )
+  }
 }
-
-
 
 
 // Informamos qual classe será renderizada no aplicativo 
