@@ -134,7 +134,7 @@ class App extends Component {
           <Text style={{ textAlign: "left"}}>
               {this.state.voltas}
             </Text>
-            <Text style={{ textAlign: "right", marginTop: -35}}>
+            <Text style={{ textAlign: "right", marginTop: -35 }}>
               {this.state.voltas}
             </Text>
           </View>
