@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, Image, ScrollView, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-web';
+import { View, Text, Button, Image, ScrollView } from 'react-native';
 import { form } from '../cronometroAPP/index'
 
 class App extends Component {
