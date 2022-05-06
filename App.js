@@ -101,16 +101,12 @@ class App extends Component {
 
     return (
       <ScrollView>
-        {/* Area que será utilizada pelo nosso conteúdo */}
         <View style={form.container}>
 
-          {/* Inserindo textos e estilizando */}
           <Text style={{ fontSize: 20, textTransform: 'uppercase' }}></Text>
           <Text style={{ color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10 }}>Cronometro Digital</Text>
 
-          {/*ScrollView com rolagem horizontal*/}
           <ScrollView>
-            {/* Chamada do Array que ira inserir as imagens vezes */}
             {imagens}
           </ScrollView>
 
