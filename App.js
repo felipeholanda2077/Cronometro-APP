@@ -60,6 +60,13 @@ class App extends Component {
     this.state.voltas.push(txtDoCronometro);
     this.forceUpdate();
   }
+  Registro() {
+    var i = 0;
+    for (; i < 9; i++) {
+    console.log(i);
+    // more statements
+}
+  }
   formatar(t) {
     return (t < 10) ? "0" + t.toString() : t.toString();
   }
