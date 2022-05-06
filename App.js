@@ -1,10 +1,8 @@
-// Importamos as bibliotecas e componentes principais para nosso projeto 
 import React, { Component } from 'react';
 import { View, Text, Button, Image, ScrollView, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-web';
 import { form } from '../cronometroAPP/index'
 
-// Criamos a nossa classe App para renderizar nosso projeto 
 class App extends Component {
 
   constructor(props) {
@@ -84,12 +82,9 @@ class App extends Component {
     var txtM = this.formatar(this.state.minutos);
     var txtS = this.formatar(this.state.segundos);
 
-    // Caminho URI da nossa imagem 
     let logoURI = "https://img.icons8.com/glyph-neue/344/stopwatch.png";
     let HomemURI = "https://www.pngplay.com/wp-content/uploads/2/Running-Man-PNG-Clipart-Background.png";
 
-    // Array de imagens
-    // Esse array ira inserir a mesma imagem até o loop terminar
     let imagens = []
     for (let i = 0; i < 1; i++) {
       imagens.push(<Image style={{ width: 340, height: 400, margin: 5 }} source={{ uri: logoURI }} />)
@@ -111,7 +106,7 @@ class App extends Component {
           </ScrollView>
 
           <Text style={{ textAlign: "center", fontSize: 50 }}>{txtH}:{txtM}:{txtS}</Text>
-          {/* Chamada do Array que ira inserir as imagens vezes */}
+
           <View>
             <Button style={{ paddingTop: 10 }} color={"black"}
               onPress={(this.state.ativo ? this.pararRelogio : this.iniciaRelogio)} title={(this.state.ativo ? 'Pausar' : 'Começar')} />
@@ -143,8 +138,6 @@ class App extends Component {
   }
 }
 
-
-// Informamos qual classe será renderizada no aplicativo 
 export default App;
 
 
