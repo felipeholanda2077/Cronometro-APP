@@ -56,17 +56,33 @@ class App extends Component {
   }
 
   marcarVolta() {
+
+    let txtH = this.formatar(this.state.horas);
+    let txtM = this.formatar(this.state.minutos);
+    let txtS = this.formatar(this.state.segundos);
+
+    let txtVolta =
+    'Volta [' +
+    (this.state.voltas.length + 1) +
+    '] ' +
+    ' -------- ' +
+    txtH +
+    ':' +
+    txtM +
+    ':' +
+    txtS +
+    '\n';
+    
+
+    this.state.voltas.push(txtVolta);
+    this.forceUpdate();
+  }
+  registro() {
     var txtDoCronometro = this.formatar(this.state.horas) + ":" + this.formatar(this.state.minutos) + ":" + this.formatar(this.state.segundos) + "\n";
     this.state.voltas.push(txtDoCronometro);
     this.forceUpdate();
   }
-  Registro() {
-    var i = 0;
-    for (; i < 9; i++) {
-    console.log(i);
-    // more statements
-}
-  }
+
   formatar(t) {
     return (t < 10) ? "0" + t.toString() : t.toString();
   }
@@ -76,7 +92,7 @@ class App extends Component {
     this.setState({ segundos: 0, minutos: 0, horas: 0 });
 
     if (this.state.voltas.length > 0) {
-      this.state.voltas.push(' ------- \n');
+      this.state.voltas.push(' ------------------------------------ \n');
     }
   }
 
@@ -126,14 +142,12 @@ class App extends Component {
             <Button style={{ paddingTop: 10 }} color={"black"} onPress={this.zerarRelogio} title='Zerar' />
           </View>
           <View>
-          <Text style={{textAlign: "left"}}>Nº Registro</Text>
-          <Text style={{position: "absolute", left: 305}}>Tempo</Text>
-          <Text style={{ textAlign: "left"}}>
+          <Text style={{textAlign: "left", left: 90}}>Nº Registro</Text>
+          <Text style={{position: "absolute", left: 195}}>Tempo</Text>
+          <Text style={{left: 100,  textAlign: "left"}}>
               {this.state.voltas}
             </Text>
-            <Text style={{left: 290, textAlign: "right", marginTop: 20, position: "absolute" }}>
-              {this.state.voltas}
-            </Text>
+
           </View>
 
           <Text style={{ textAlign: "center", fontSize: 13, paddingTop: 100 }}>© Felipe Holanda - Atividades Ágeis</Text>
