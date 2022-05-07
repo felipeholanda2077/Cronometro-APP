@@ -22,7 +22,7 @@
 <h4 align="center">Digitar no terminal: expo start </h4>
 <h3 align="center">---------------------------------------------</h3>
 
-<br><br>
+<br>
 
 ### Tecnologias 🚀
 
