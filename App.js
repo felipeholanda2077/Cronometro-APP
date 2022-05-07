@@ -121,7 +121,7 @@ class App extends Component {
         <View style={form.container}>
 
           <Text style={{ fontSize: 20, textTransform: 'uppercase' }}></Text>
-          <Text style={{ color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10 }}>Cronometro Digital</Text>
+          <Text style={{ color: 'black', fontSize: 20, textTransform: 'uppercase', textAlign: 'center', paddingTop: 10 }}>Cronometro Esportivo</Text>
 
           <ScrollView>
             {imagens}
