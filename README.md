@@ -10,7 +10,7 @@
 <a href="#Ferramentas">Ferramentas</a></p>
 
 <h2 align="center"> Sobre o Projeto 👨🏻‍💻</h2>
-<h3 align="center">Cronometro-APP</h3>
+<h3 align="center">Cronometro-APP / FINALIZADO/h3>
 <p align="center">Um aplicativo de um Cronometro para uma atividade do curso do Senac</p>
 
 <br>
